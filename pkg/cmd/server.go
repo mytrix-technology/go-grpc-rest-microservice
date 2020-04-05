@@ -9,6 +9,9 @@ import (
 	// mysql driver
 	_ "github.com/go-sql-driver/mysql"
 
+	//postgresql driver
+	//pgsql "github.com/lib/pq"
+
 	"github.com/mytrix-technology/go-grpc-rest-microservice/pkg/protocol/grpc"
 	"github.com/mytrix-technology/go-grpc-rest-microservice/pkg/service/v1"
 )
@@ -36,11 +39,11 @@ func RunServer() error {
 
 	// get configuration
 	var cfg Config
-	flag.StringVar(&cfg.GRPCPort, "grpc-port", "", "gRPC port to bind")
-	flag.StringVar(&cfg.DatastoreDBHost, "db-host", "", "Database host")
-	flag.StringVar(&cfg.DatastoreDBUser, "db-user", "", "Database user")
-	flag.StringVar(&cfg.DatastoreDBPassword, "db-password", "", "Database password")
-	flag.StringVar(&cfg.DatastoreDBSchema, "db-schema", "", "Database schema")
+	flag.StringVar(&cfg.GRPCPort, "grpc-port", "9090", "gRPC port to bind")
+	flag.StringVar(&cfg.DatastoreDBHost, "db-host", "localhost", "Database host")
+	flag.StringVar(&cfg.DatastoreDBUser, "db-user", "root", "Database user")
+	flag.StringVar(&cfg.DatastoreDBPassword, "db-password", "Pr0f3$0r", "Database password")
+	flag.StringVar(&cfg.DatastoreDBSchema, "db-schema", "grpc_test", "Database schema")
 	flag.Parse()
 
 	if len(cfg.GRPCPort) == 0 {
