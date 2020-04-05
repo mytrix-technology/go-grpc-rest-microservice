@@ -2,6 +2,34 @@ syntax = "proto3";
 package v1;
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "protoc-gen-swagger/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+    info: {
+            title: "ToDo Service";
+            version: "1.0";
+            contact: {
+                        name: "go-grpc-rest-microservice project";
+                        url: "https://github.com/mytrix-technology/go-grpc-rest-microservice";
+                        email: "yudhistiro.tri.aronggo@gmail.com";
+            };
+    };
+    schemes: HTTP;
+    consumes: "application/json";
+    produces: "application/json";
+    responses: {
+                    key: "404";
+                    value: {
+                            description: "Returned when the resource does not exists";
+                            schema: {
+                                    json_schema: {
+                                                    type: STRING;
+                                    }
+                            }
+                    }
+    }
+}
 
 // Taks we have to do
 message ToDo {
